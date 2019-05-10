@@ -39,3 +39,47 @@
     </div>
   </div>
 </div>
+<div class="container">
+  <div>Search by Brand</div>
+  <div>
+    <input [(ngModel)]="searchText" name="titleSearch"/>
+  </div>
+  <div>
+    <button (click)="searchById()">Search</button>
+  </div>
+  <div>
+    <ul *ngFor="let product of productResults">
+      <li>{{product.id}}</li>
+    </ul>
+  </div>
+  </div>
+  <div class="container">
+    <div>Search by Color</div>
+    <div>
+      <input [(ngModel)]="searchText" name="titleSearch"/>
+    </div>
+    <div>
+      <button (click)="searchByColor()">Search</button>
+    </div>
+    <div>
+      <ul *ngFor="let product of productResults">
+        <li>{{product.color}}</li>
+      </ul>
+    </div>
+    </div>
+
+    <label>Search: <input ng-model="searchByPrice"></label>
+<table id="searchTextResults">
+  <tr><th>productPrice</th></tr>
+  <tr ng-repeat="product in productResults| filter:searchByPrice">
+    <td>{{product.id}}</td>
+    <td>{{product.productName}}</td>
+    <td>{{product.productPrice}}</td>
+    <td>{{product.productColor}</td>
+    <td>{{product.ProductBrand}}</td>
+    <td>{{product.productCategory}</td>
+  </tr>
+</table>
+
+
+

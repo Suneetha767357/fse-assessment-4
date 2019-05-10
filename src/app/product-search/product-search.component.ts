@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductService } from '../product-service.service';
+import { Product } from '../product';
 
 @Component({
   selector: 'app-product-search',
@@ -7,9 +9,28 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductSearchComponent implements OnInit {
 
-  constructor() { }
+  product : Product[];
+  searchText:string;
 
-  ngOnInit() {
+  constructor(public productService : ProductService ) { 
+
+  }
+
+  searchById(){
+    this.productService.searchProductByBrand(this.searchText)
+        .subscribe((response)=>this.product = response);
+  }
+
+  searchByColor(){
+    this.productService.searchProductByColor(this.searchText)
+        .subscribe((response)=>this.product = response);
+  }
+
+  searchByPrice(){
+    this.productService.searchProductByPrice(this.searchText)
+        .subscribe((response)=>this.product = response);
+  }
+   ngOnInit() {
   }
 
 }
